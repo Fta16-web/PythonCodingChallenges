@@ -3,7 +3,7 @@
 # you can create subsequences of a list by removing some or no element 
 # from the list without changing the order of remaining elements
 # write a function such that it accepts  two  arrays and 
-# determines if array provided in the second argument is an valid
+# determines if array provided in the second argument is a valid
 # subsequence of array provided in the first argument 
 # https://en.wikipedia.org/wiki/Subsequence
 # Time = O(n) | space = O(1)
