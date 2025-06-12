@@ -68,7 +68,10 @@ class TestGetSortedSquareArray(unittest.TestCase):
         expected = [4, 16, 36, 100]
         self.assertEqual(get_sorted_square_array_one(array),expected)
         self.assertEqual(get_sorted_square_array_two(array),expected)
-        
+        array = [-16, -2, 4, 10]
+        expected = [4, 16, 100,256]
+        self.assertEqual(get_sorted_square_array_one(array),expected)
+        self.assertEqual(get_sorted_square_array_two(array),expected)
     def test_edge_cases(self):
         # empty array
         array = []
