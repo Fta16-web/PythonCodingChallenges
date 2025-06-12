@@ -14,7 +14,7 @@ def is_monotonic(array :List [int] ) -> bool:
     case first elemenet == last element => all same elements or not monotonic
    '''
    n = len(array)
-   if (n < 3 ):
+   if (n < 2 ):
       return True
    first = array[0]
    last = array[n-1]
@@ -36,9 +36,11 @@ def is_monotonic_2(array :List [int] ) -> bool:
     n = len(array)
     MD = MI = True
     for k in range(n-1):
-           if array[k]> array[k+1]:
+           if array[k] > array[k+1]:
                MD = False
-            if 
+           if  array[k] < array[k+1]:
+               MI = False
+    return MD | MI
 
   
    
@@ -46,12 +48,17 @@ class TestIsMonotonic(unittest.TestCase):
     def test_edge_cases(self):
         # Empty array
         self.assertTrue(is_monotonic([]))
+        self.assertTrue(is_monotonic_2([]))
         # Single element
         self.assertTrue(is_monotonic([5]))
+        self.assertTrue(is_monotonic_2([5]))
         # two elements
         self.assertTrue(is_monotonic([1,1]))
         self.assertTrue(is_monotonic([1,2]))
         self.assertTrue(is_monotonic([2,1]))
+        self.assertTrue(is_monotonic_2([1,1]))
+        self.assertTrue(is_monotonic_2([1,2]))
+        self.assertTrue(is_monotonic_2([2,1]))
     def test_multiple_elements(self):
         # Multiple elements (Optional additions for robustness)
         self.assertTrue(is_monotonic([1, 2, 2, 3]))
@@ -59,9 +66,18 @@ class TestIsMonotonic(unittest.TestCase):
         self.assertTrue(is_monotonic([9, 7, 5, 3]))
         self.assertFalse(is_monotonic([1, 3, 2]))
         self.assertFalse(is_monotonic([1, -3, 2]))
-        self.assertFalse(is_monotonic([1, 1, 1]))
+        self.assertTrue(is_monotonic([1, 1, 1]))
         self.assertTrue(is_monotonic(list(range(100000))) )  # Increasing
         self.assertTrue(is_monotonic(list(range(100000, 0, -1))))  # Decreasing
+        #---------------------------------------------
+        self.assertTrue(is_monotonic_2([1, 2, 2, 3]))
+        self.assertTrue(is_monotonic_2([5, 5, 5, 5]))
+        self.assertTrue(is_monotonic_2([9, 7, 5, 3]))
+        self.assertFalse(is_monotonic_2([1, 3, 2]))
+        self.assertFalse(is_monotonic_2([1, -3, 2]))
+        self.assertTrue(is_monotonic_2([1, 1, 1]))
+        self.assertTrue(is_monotonic_2(list(range(100000))) )  # Increasing
+        self.assertTrue(is_monotonic_2(list(range(100000, 0, -1))))  # Decreasing
     
 if __name__ == '__main__':
     unittest.main()
